@@ -32,6 +32,7 @@ describe('BadRequestError', () => {
 describe('InvalidUserDataError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidUserDataError()
+
     expect(error.type).toBe('INVALID_USER_DATA')
     expect(error.message).toBe('Missing required user information in the request.')
     expect(error.statusCode).toBe(400)
