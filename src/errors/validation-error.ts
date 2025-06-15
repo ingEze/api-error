@@ -2,7 +2,7 @@ import { ErrorHandler } from './error-handler'
 import { ValidationErrorType } from 'src/types'
 
 export class ValidationError extends ErrorHandler {
-  constructor(message: string = 'Validation error', type: ValidationErrorType, details?: Record<string, unknown>) {
+  constructor(message: string = 'Validation error', type: ValidationErrorType = 'VALIDATION', details?: Record<string, unknown>) {
     super(message, 422, type, details)
   }
 }

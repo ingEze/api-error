@@ -2,7 +2,7 @@ import { BadRequestErrorType } from 'src/types/bad-request-error.types'
 import { ErrorHandler } from './error-handler'
 
 export class BadRequestError extends ErrorHandler {
-  constructor(message: string = 'Bad request.', type: BadRequestErrorType, details?: Record<string, unknown>) {
+  constructor(message: string = 'Bad request.', type: BadRequestErrorType = 'BAD_REQUEST', details?: Record<string, unknown>) {
     super(message, 400, type, details)
   }
 }

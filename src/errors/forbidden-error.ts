@@ -2,7 +2,7 @@ import { ErrorHandler } from './error-handler'
 import { ForbiddenErrorType } from 'src/types'
 
 export class ForbiddenError extends ErrorHandler {
-  constructor(message: string = 'Forbidden access', type: ForbiddenErrorType, details?: Record<string, unknown>) {
+  constructor(message: string = 'Forbidden access', type: ForbiddenErrorType = 'FORBIDDEN', details?: Record<string, unknown>) {
     super(message, 403, type, details)
   }
 }

@@ -2,7 +2,7 @@ import type { UnauthorizedErrorType } from 'src/types/unauthorized-error.types'
 import { ErrorHandler } from '.'
 
 export class UnauthorizedError extends ErrorHandler {
-  constructor(message: string = 'Unauthorized', type: UnauthorizedErrorType, details?: Record<string, unknown>) {
+  constructor(message: string = 'Unauthorized', type: UnauthorizedErrorType = 'UNAUTHORIZED', details?: Record<string, unknown>) {
     super(message, 401, type, details)
   }
 }

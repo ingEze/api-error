@@ -2,7 +2,7 @@ import type { NotFoundErrorType } from 'src/types/not-found-error.types'
 import { ErrorHandler } from './error-handler'
 
 export class NotFoundError extends ErrorHandler {
-  constructor(message: string = 'Resource not found', type: NotFoundErrorType, details?: Record<string, unknown>) {
+  constructor(message: string = 'Resource not found', type: NotFoundErrorType = 'NOT_FOUND', details?: Record<string, unknown>) {
     super(message, 404, type, details)
   }
 }
