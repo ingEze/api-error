@@ -1,5 +1,8 @@
 # @ingeze/api-error
 
+[![CI](https://github.com/ingeze/api-error/actions/workflows/nodejs.yml/badge.svg)](https://github.com/ingeze/api-error/actions/workflows/nodejs.yml)
+
+
 A TypeScript library for consistent HTTP error handling in Express, NestJS, and Fastify APIs.
 
 ## Features

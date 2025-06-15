@@ -8,8 +8,8 @@ export function expressHandlerMiddleware(err: Error, req: Request, res: Response
   } else {
     res.status(500).json({
       success: false,
-      type: 'INTERNAL_SERVER_ERROR',
       statusCode: 500,
+      type: 'INTERNAL_SERVER_ERROR',
       message: 'An unexpected error occurred'
     })
   }

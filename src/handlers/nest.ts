@@ -3,7 +3,7 @@ import { Response } from 'express'
 import { ErrorHandler } from '../errors/error-handler'
 
 @Catch(ErrorHandler)
-export class ErrorHandlerFilter implements ExceptionFilter {
+export class NestErrorHandlerFilter implements ExceptionFilter {
   catch(exception: ErrorHandler, host: ArgumentsHost): void {
     const ctx  = host.switchToHttp()
     const response = ctx.getResponse<Response>()
@@ -13,7 +13,7 @@ export class ErrorHandlerFilter implements ExceptionFilter {
 }
 
 @Catch()
-export class GenericErrorFilter implements ExceptionFilter {
+export class NestGenericErrorFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost): void {
     const ctx = host.switchToHttp()
     const response = ctx.getResponse<Response>()
