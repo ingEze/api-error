@@ -18,7 +18,6 @@ export class GenericErrorFilter implements ExceptionFilter {
     const ctx = host.switchToHttp()
     const response = ctx.getResponse<Response>()
 
-    // Maneja excepciones de NestJS (HttpException)
     if (exception instanceof HttpException) {
       const status = (exception as HttpException).getStatus()
       const message = exception.message || 'An error occurred'
@@ -30,7 +29,6 @@ export class GenericErrorFilter implements ExceptionFilter {
       })
     }
 
-    // Maneja errores genéricos no capturados
     response.status(500).json({
       success: false,
       type: 'INTERNAL_SERVER_ERROR',

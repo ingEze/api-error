@@ -78,8 +78,6 @@ export class AppModule {}
 - `ValidationError` (422)
 - ...and more specific subclasses
 
-See the [types directory](src/types/index.ts) for all error types.
-
 ## License
 
 MIT

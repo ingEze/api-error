@@ -1,12 +1,5 @@
 import { BadRequestErrorType, NotFoundErrorType, UnauthorizedErrorType  } from 'src/types'
-
-interface ErrorResponse {
-  success: boolean
-  type: string
-  statusCode: number
-  message: string
-  details?: Record<string, unknown>
-}
+import type { ErrorResponse } from 'src/types'
 
 export class ErrorHandler extends Error {
   public success: boolean
