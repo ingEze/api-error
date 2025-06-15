@@ -5,10 +5,13 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
+    "declaration": true,
+    "declarationMap": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
     "baseUrl": "./",
+    "rootDir": "./src",
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
@@ -20,10 +23,12 @@
     "*.js",
     "types",
     "esbuild.config.js",
-    "eslint.config.js"
+    "eslint.config.js",
+    "src/errors/error-handler.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "test"
   ]
 }
