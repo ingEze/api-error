@@ -1,3 +1,6 @@
 src/
-*.ts
+tests/
+esbuild.config.js
+.gitignore
+.eslintrc
 tsconfig.json

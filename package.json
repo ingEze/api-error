@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "type": "module",
-  "files": ["dist/**/*"],
-  "types": "dist/index.d.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -31,17 +33,41 @@
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc",
     "dev": "node esbuild.config.js && node dist/main.js",
     "prepublishOnly": "node esbuild.config.js"
   },
-  "keywords": [],
+  "keywords": [
+    "error",
+    "api",
+    "http",
+    "typescript",
+    "express",
+    "nestjs",
+    "fastify",
+    "error-handling",
+    "rest",
+    "http-error",
+    "api-error-handling"
+  ],
   "author": "Ezequiel Saucedo",
   "license": "MIT",
-  "description": "",
+  "description": "A TypeScript library for handling HTTP errors in Express, NestJS, and Fastify APIs.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingEze/api-error.git"
+  },
+  "homepage": "https://github.com/ingeze/api-error#readme",
+  "bugs": {
+    "url": "https://github.com/ingeze/api-error/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@nestjs/common": "^11.1.3",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.1",
     "esbuild": "^0.25.5",
@@ -52,7 +78,6 @@
   },
   "peerDependencies": {
     "express": "^4.0.0",
-    "@nestjs/core": "^8.0.0 || ^9.0.0",
     "fastify": "^4.0.0"
   }
 }
