@@ -8,24 +8,47 @@
  * @module errors/validation-error
  */
 
-import { ErrorHandler } from './error-handler.js'
-import type { ValidationErrorType } from '../types/index.js'
+import { ErrorHandler } from './error-handler'
+import type { ValidationErrorType } from '../types/index'
 
 /**
  * Represents a generic validation error (HTTP 422).
+ *
+ * This error is thrown when the client sends data that is syntactically correct
+ * but semantically invalid (e.g., missing required fields, invalid formats).
+ *
+ * Can be instantiated with either a custom message, type, and optional details,
+ * or directly with a `details` object.
  *
  * @extends ErrorHandler
  */
 export class ValidationError extends ErrorHandler {
   /**
-   * Creates a new ValidationError instance.
+   * Creates a new ValidationError instance with optional details.
    *
-   * @param {string} [message='Validation error'] Error message.
-   * @param {ValidationErrorType} [type='VALIDATION'] Specific validation error type.
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * @param {Record<string, unknown>=} details - Additional error details describing the validation failure.
    */
-  constructor(message: string = 'Validation error', type: ValidationErrorType = 'VALIDATION', details?: Record<string, unknown>) {
-    super(message, 422, type, details)
+  constructor(details?: Record<string, unknown>)
+
+  /**
+   * Creates a new ValidationError instance with a custom message, type, and optional details.
+   *
+   * @param {string} message - A custom error message describing the validation issue.
+   * @param {ValidationErrorType=} type - A specific error type identifier.
+   * @param {Record<string, unknown>=} details - Additional error details.
+   */
+  constructor(message?: string, type?: ValidationErrorType, details?: Record<string, unknown>)
+
+  constructor(
+    messageOrDetails?: string | Record<string, unknown>,
+    type: ValidationErrorType = 'VALIDATION',
+    details?: Record<string, unknown>
+  ) {
+    if (typeof messageOrDetails === 'string') {
+      super(messageOrDetails, 422, type, details)
+    } else {
+      super('Validation error', 422, type, messageOrDetails)
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import type { BadRequestErrorType, NotFoundErrorType, UnauthorizedErrorType, ErrorResponse, ForbiddenErrorType, ValidationErrorType  } from '../types/index.js'
+import type { BadRequestErrorType, NotFoundErrorType, UnauthorizedErrorType, ErrorResponse, ForbiddenErrorType, ValidationErrorType  } from '../types/index'
 
 /**
  * Custom error handler class for the application.

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { ErrorHandler } from '../errors/index.js'
+import { ErrorHandler } from '../errors/index'
 
 /**
  * Express error handling middleware for the `@ingeze/api-error` package.

@@ -1,1 +1,1 @@
-export * from './handlers/express.js'
+export * from './handlers/express'

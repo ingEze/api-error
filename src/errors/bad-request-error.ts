@@ -8,8 +8,8 @@
  * @module errors/bad-request-error
  */
 
-import type { BadRequestErrorType } from '../types/index.js'
-import { ErrorHandler } from './error-handler.js'
+import type { BadRequestErrorType } from '../types/index'
+import { ErrorHandler } from './error-handler'
 
 /**
  * Represents a generic bad request error (HTTP 400).
@@ -20,16 +20,27 @@ export class BadRequestError extends ErrorHandler {
   /**
    * Creates a new BadRequestError instance.
    *
-   * @param {string} [message='Bad request.'] Error message.
-   * @param {BadRequestErrorType} [type='BAD_REQUEST'] Specific bad request error type.
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
+  constructor(details?: Record<string, unknown>)
+  /**
+   * Creates a new BadRequestError instance with a message and type.
+   *
+   * @param {string=} message - Error message.
+   * @param {BadRequestErrorType=} type - Specific bad request error type.
+   * @param {Record<string, unknown>=} details - Optional additional error details.
+   */
+  constructor(message?: string, type?: BadRequestErrorType, details?: Record<string, unknown>)
   constructor(
-    message: string = 'Bad request.',
+    messageOrDetails?: string | Record<string, unknown>,
     type: BadRequestErrorType = 'BAD_REQUEST',
     details?: Record<string, unknown>
   ) {
-    super(message, 400, type, details)
+    if (typeof messageOrDetails === 'string') {
+      super(messageOrDetails, 400, type, details)
+    } else {
+      super('Bad request', 400, type, messageOrDetails)
+    }
   }
 }
 
@@ -40,10 +51,12 @@ export class BadRequestError extends ErrorHandler {
  */
 export class InvalidUserDataError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidUserDataError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Missing required user information in the request.', 'INVALID_USER_DATA', details)
+    super('Missing required user information in the request', 'INVALID_USER_DATA', details)
   }
 }
 
@@ -54,10 +67,12 @@ export class InvalidUserDataError extends BadRequestError {
  */
 export class InvalidEmailError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidEmailError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid email format or missing email field.', 'INVALID_EMAIL', details)
+    super('Invalid email format or missing email field', 'INVALID_EMAIL', details)
   }
 }
 
@@ -68,10 +83,12 @@ export class InvalidEmailError extends BadRequestError {
  */
 export class InvalidProductDataError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidProductDataError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid or missing product details.', 'INVALID_PRODUCT_DATA', details)
+    super('Invalid or missing product details', 'INVALID_PRODUCT_DATA', details)
   }
 }
 
@@ -82,10 +99,12 @@ export class InvalidProductDataError extends BadRequestError {
  */
 export class InvalidPostData extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidPostData instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid or missing post data.', 'INVALID_POST_DATA', details)
+    super('Invalid or missing post data', 'INVALID_POST_DATA', details)
   }
 }
 
@@ -96,10 +115,12 @@ export class InvalidPostData extends BadRequestError {
  */
 export class InvalidCommentDataError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidCommentDataError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid or missing comment data.', 'INVALID_COMMENT_DATA', details)
+    super('Invalid or missing comment data', 'INVALID_COMMENT_DATA', details)
   }
 }
 
@@ -110,10 +131,12 @@ export class InvalidCommentDataError extends BadRequestError {
  */
 export class InvalidCategoryDataError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidCategoryDataError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid or missing category information.', 'INVALID_CATEGORY_DATA', details)
+    super('Invalid or missing category information', 'INVALID_CATEGORY_DATA', details)
   }
 }
 
@@ -124,10 +147,12 @@ export class InvalidCategoryDataError extends BadRequestError {
  */
 export class InvalidFileError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidFileError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid or missing file in the request.', 'INVALID_FILE', details)
+    super('Invalid or missing file in the request', 'INVALID_FILE', details)
   }
 }
 
@@ -138,7 +163,9 @@ export class InvalidFileError extends BadRequestError {
  */
 export class InvalidImageError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidImageError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
     super('Invalid or missing image data', 'INVALID_IMAGE', details)
@@ -152,9 +179,11 @@ export class InvalidImageError extends BadRequestError {
  */
 export class InvalidAddressError extends BadRequestError {
   /**
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * Creates a new InvalidAddressError instance.
+   *
+   * @param {Record<string, unknown>=} details - Optional additional error details.
    */
   constructor(details?: Record<string, unknown>) {
-    super('Invalid or missing address information.', 'INVALID_ADDRESS', details)
+    super('Invalid or missing address information', 'INVALID_ADDRESS', details)
   }
 }

@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { ErrorHandler } from '../errors/index.js'
+import { ErrorHandler } from '../errors/index'
 
 /**
  * Fastify middleware for handling errors in a Fastify application.

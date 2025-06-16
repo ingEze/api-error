@@ -8,8 +8,8 @@
  * @module errors/not-found-error
  */
 
-import type { NotFoundErrorType } from '../types/index.js'
-import { ErrorHandler } from './error-handler.js'
+import type { NotFoundErrorType } from '../types/index'
+import { ErrorHandler } from './error-handler'
 
 /**
  * Represents a generic "Not Found" error corresponding to HTTP status 404.

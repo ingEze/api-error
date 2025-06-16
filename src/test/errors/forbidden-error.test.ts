@@ -19,7 +19,7 @@ describe('ForbiddenError', () => {
     expect(error).toBeInstanceOf(ErrorHandler)
     expect(error.statusCode).toBe(403)
     expect(error.type).toBe('FORBIDDEN')
-    expect(error.message).toBe('Forbidden access')
+    expect(error.message).toBe('Forbidden')
   })
 
   it('should accept custom message and details', () => {

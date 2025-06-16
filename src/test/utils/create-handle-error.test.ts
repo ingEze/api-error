@@ -1,5 +1,5 @@
 import { createHandleError } from 'src/utils/create-handle-error'
-import { ErrorHandler } from 'src/errors'
+import { ErrorHandler } from 'src/errors/index'
 
 describe('createHandleError', () => {
   it('should create a custom error class with default values', () => {

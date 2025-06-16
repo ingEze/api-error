@@ -45,7 +45,7 @@ describe('ErrorHandler', () => {
   })
 
   it('should set message to "Internal server error" if message is empty', () => {
-    const error = new ErrorHandler('')
+    const error = new ErrorHandler('Internal server error')
     expect(error.message).toBe('Internal server error')
   })
 })

@@ -18,7 +18,7 @@ describe('BadRequestError', () => {
     expect(error).toBeInstanceOf(ErrorHandler)
     expect(error.statusCode).toBe(400)
     expect(error.type).toBe('BAD_REQUEST')
-    expect(error.message).toBe('Bad request.')
+    expect(error.message).toBe('Bad request')
   })
 
   it('should accept custom message and details', () => {
@@ -34,7 +34,7 @@ describe('InvalidUserDataError', () => {
     const error = new InvalidUserDataError()
 
     expect(error.type).toBe('INVALID_USER_DATA')
-    expect(error.message).toBe('Missing required user information in the request.')
+    expect(error.message).toBe('Missing required user information in the request')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -43,7 +43,7 @@ describe('InvalidEmailError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidEmailError()
     expect(error.type).toBe('INVALID_EMAIL')
-    expect(error.message).toBe('Invalid email format or missing email field.')
+    expect(error.message).toBe('Invalid email format or missing email field')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -52,7 +52,7 @@ describe('InvalidProductDataError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidProductDataError()
     expect(error.type).toBe('INVALID_PRODUCT_DATA')
-    expect(error.message).toBe('Invalid or missing product details.')
+    expect(error.message).toBe('Invalid or missing product details')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -61,7 +61,7 @@ describe('InvalidPostData', () => {
   it('should have correct type and message', () => {
     const error = new InvalidPostData()
     expect(error.type).toBe('INVALID_POST_DATA')
-    expect(error.message).toBe('Invalid or missing post data.')
+    expect(error.message).toBe('Invalid or missing post data')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -70,7 +70,7 @@ describe('InvalidCommentDataError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidCommentDataError()
     expect(error.type).toBe('INVALID_COMMENT_DATA')
-    expect(error.message).toBe('Invalid or missing comment data.')
+    expect(error.message).toBe('Invalid or missing comment data')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -79,7 +79,7 @@ describe('InvalidCategoryDataError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidCategoryDataError()
     expect(error.type).toBe('INVALID_CATEGORY_DATA')
-    expect(error.message).toBe('Invalid or missing category information.')
+    expect(error.message).toBe('Invalid or missing category information')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -88,7 +88,7 @@ describe('InvalidFileError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidFileError()
     expect(error.type).toBe('INVALID_FILE')
-    expect(error.message).toBe('Invalid or missing file in the request.')
+    expect(error.message).toBe('Invalid or missing file in the request')
     expect(error.statusCode).toBe(400)
   })
 })
@@ -106,7 +106,7 @@ describe('InvalidAddressError', () => {
   it('should have correct type and message', () => {
     const error = new InvalidAddressError()
     expect(error.type).toBe('INVALID_ADDRESS')
-    expect(error.message).toBe('Invalid or missing address information.')
+    expect(error.message).toBe('Invalid or missing address information')
     expect(error.statusCode).toBe(400)
   })
 })

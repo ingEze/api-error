@@ -8,24 +8,45 @@
  * @module errors/forbidden-error
  */
 
-import { ErrorHandler } from './error-handler.js'
-import type { ForbiddenErrorType } from '../types/index.js'
+import { ErrorHandler } from './error-handler'
+import type { ForbiddenErrorType } from '../types/index'
 
 /**
  * Represents a generic forbidden error (HTTP 403).
+ *
+ * This error is thrown when a user attempts to access a resource
+ * they do not have permission for. It can be instantiated with either
+ * a custom message and type, or with just a `details` object.
  *
  * @extends ErrorHandler
  */
 export class ForbiddenError extends ErrorHandler {
   /**
-   * Creates a new ForbiddenError instance.
+   * Creates a new ForbiddenError instance with optional details.
    *
-   * @param {string} [message='Forbidden access'] Error message.
-   * @param {ForbiddenErrorType} [type='FORBIDDEN'] Specific forbidden error type.
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * @param {Record<string, unknown>=} details - Additional error details.
    */
-  constructor(message: string = 'Forbidden access', type: ForbiddenErrorType = 'FORBIDDEN', details?: Record<string, unknown>) {
-    super(message, 403, type, details)
+  constructor(details?: Record<string, unknown>)
+
+  /**
+   * Creates a new ForbiddenError instance with a custom message, type, and optional details.
+   *
+   * @param {string} message - A custom error message.
+   * @param {ForbiddenErrorType=} type - A specific error type identifier.
+   * @param {Record<string, unknown>=} details - Additional error details.
+   */
+  constructor(message?: string, type?: ForbiddenErrorType, details?: Record<string, unknown>)
+
+  constructor(
+    messageOrDetails?: string | Record<string, unknown>,
+    type: ForbiddenErrorType = 'FORBIDDEN',
+    details?: Record<string, unknown>
+  ) {
+    if (typeof messageOrDetails === 'string') {
+      super(messageOrDetails, 403, type, details)
+    } else {
+      super('Forbidden', 403, type, messageOrDetails)
+    }
   }
 }
 

@@ -8,24 +8,47 @@
  * @module errors/unauthorized-error
  */
 
-import type { UnauthorizedErrorType } from '../types/index.js'
-import { ErrorHandler } from './error-handler.js'
+import type { UnauthorizedErrorType } from '../types/index'
+import { ErrorHandler } from './error-handler'
 
 /**
  * Represents a generic unauthorized error (HTTP 401).
+ *
+ * This error is thrown when the request requires user authentication
+ * but the client has failed to provide valid credentials.
+ *
+ * Can be instantiated with either a custom message, type, and optional details,
+ * or directly with a `details` object.
  *
  * @extends ErrorHandler
  */
 export class UnauthorizedError extends ErrorHandler {
   /**
-   * Creates a new UnauthorizedError instance.
+   * Creates a new UnauthorizedError instance with optional details.
    *
-   * @param {string} [message='Unauthorized'] Error message.
-   * @param {UnauthorizedErrorType} [type='UNAUTHORIZED'] Specific unauthorized error type.
-   * @param {Record<string, unknown>=} details Optional additional error details.
+   * @param {Record<string, unknown>=} details - Additional error details related to the authentication failure.
    */
-  constructor(message: string = 'Unauthorized', type: UnauthorizedErrorType = 'UNAUTHORIZED', details?: Record<string, unknown>) {
-    super(message, 401, type, details)
+  constructor(details?: Record<string, unknown>)
+
+  /**
+   * Creates a new UnauthorizedError instance with a custom message, type, and optional details.
+   *
+   * @param {string} message - A custom error message describing the authentication issue.
+   * @param {UnauthorizedErrorType=} type - A specific unauthorized error type identifier.
+   * @param {Record<string, unknown>=} details - Additional error details.
+   */
+  constructor(message?: string, type?: UnauthorizedErrorType, details?: Record<string, unknown>)
+
+  constructor(
+    messageOrDetails?: string | Record<string, unknown>,
+    type: UnauthorizedErrorType = 'UNAUTHORIZED',
+    details?: Record<string, unknown>
+  ) {
+    if (typeof messageOrDetails === 'string') {
+      super(messageOrDetails, 401, type, details)
+    } else {
+      super('Unauthorized', 401, type, messageOrDetails)
+    }
   }
 }
 
