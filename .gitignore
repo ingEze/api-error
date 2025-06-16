@@ -3,3 +3,5 @@ dist/
 *.log
 .env
 *.txt
+docs/
+typedoc-assets

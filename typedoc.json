@@ -2,11 +2,13 @@
   "entryPoints": [
     "src/index.ts"
   ],
+  "customCss": "typedoc-assets/custom.css",
   "out": "docs",
-  "name": "Nombre de tu Proyecto",
-  "includeVersion": true,
+  "theme": "default",
   "excludePrivate": true,
-  "excludeProtected": true,
   "excludeExternals": true,
-  "theme": "clarity"
+  "excludeNotDocumented": false,
+  "readme": "README.md",
+  "disableSources": true,
+  "includeVersion": true,
 }
