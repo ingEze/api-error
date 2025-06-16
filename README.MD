@@ -1,8 +1,10 @@
 # @ingeze/api-error
 
 [![CI](https://github.com/ingeze/api-error/actions/workflows/nodejs.yml/badge.svg)](https://github.com/ingeze/api-error/actions/workflows/nodejs.yml)
-[![npm version](https://badge.fury.io/js/%40ingeze%2Fapi-error.svg)](https://badge.fury.io/js/%40ingeze%2Fapi-error)
+[![npm version](https://img.shields.io/npm/v/@ingeze/api-error)](https://www.npmjs.com/package/@ingeze/api-error)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Bundle size](https://img.shields.io/bundlephobia/min/@ingeze/api-error)](https://bundlephobia.com/package/@ingeze/api-error)
+[![dependencies Status](https://img.shields.io/david/ingeze/api-error)](https://david-dm.org/ingeze/api-error)
 
 A comprehensive TypeScript library for **consistent HTTP error handling** across Express, NestJS, and Fastify APIs. Built with developer experience in mind, providing type-safe error classes and framework-specific middleware for seamless API error management.
 
