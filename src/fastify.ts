@@ -1,1 +1,1 @@
-export * from './handlers/fastify'
+export { fastifyErrorMiddleware } from './handlers/fastify'

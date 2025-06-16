@@ -6,3 +6,4 @@ dist/
 docs/
 typedoc-assets
 task.md
+*.tgz

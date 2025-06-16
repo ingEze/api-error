@@ -1,6 +1,6 @@
 {
   "name": "@ingeze/api-error",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "type": "module",
   "files": [
@@ -12,20 +12,24 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
     "./express": {
+      "types": "./dist/express.d.ts",
       "import": "./dist/express.js",
       "require": "./dist/express.js"
     },
     "./nest": {
-        "import": "./dist/nest.js",
-        "require": "./dist/nest.js"
+      "types": "./dist/nest.d.ts",
+      "import": "./dist/nest.js",
+      "require": "./dist/nest.js"
     },
     "./fastify": {
-        "import": "./dist/fastify.js",
-        "require": "./dist/fastify.js"
+      "types": "./dist/fastify.d.ts",
+      "import": "./dist/fastify.js",
+      "require": "./dist/fastify.js"
     }
   },
   "scripts": {
@@ -34,7 +38,7 @@
     "build": "npx tsc",
     "build:types": "tsc --emitDeclarationOnly",
     "dev": "node esbuild.config.js && node dist/main.js",
-    "prepublishOnly": "node esbuild.config.js",
+    "prepublishOnly": "npm run build:types && node esbuild.config.js",
     "clean": "rm -rf dist",
     "docs": "typedoc"
   },
@@ -83,7 +87,7 @@
     "typescript-eslint": "^8.34.0"
   },
   "peerDependencies": {
-    "express": "^4.0.0",
-    "fastify": "^4.0.0"
+    "express": ">=4.0.0",
+    "fastify": ">=4.0.0"
   }
 }

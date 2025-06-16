@@ -1,1 +1,1 @@
-export * from './handlers/express'
+export { expressErrorMiddleware } from './handlers/express'
