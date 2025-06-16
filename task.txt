@@ -1,1 +1,0 @@
-Crear una class con un constructor, que te permita crear tus propios errores.

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { beforeEach, describe } from 'node:test'
 import { ErrorHandler } from 'src/errors/error-handler'
-import { expressHandlerMiddleware } from 'src/handlers/express'
+import { expressErrorMiddleware } from 'src/handlers/express'
 
 describe('expressHandlerMiddleware with mocks', () => {
   let req: Partial<Request>
@@ -23,7 +23,7 @@ describe('expressHandlerMiddleware with mocks', () => {
 
   it('handles custom ErrorHandler', () => {
     const err = new ErrorHandler('Custom error', 400, 'CUSTOM_ERROR', { id: 1, info: 'Custom error' })
-    expressHandlerMiddleware(err, req as Request, res as Response, next as NextFunction)
+    expressErrorMiddleware(err, req as Request, res as Response, next as NextFunction)
 
     expect(res.status).toHaveBeenCalledWith(400)
     expect(res.json).toHaveBeenCalledWith(err.toJSON())
@@ -32,7 +32,7 @@ describe('expressHandlerMiddleware with mocks', () => {
   it ('handles generic error', () => {
     const err = new Error('Something went wrong')
 
-    expressHandlerMiddleware(err, req as Request, res as Response, next as NextFunction)
+    expressErrorMiddleware(err, req as Request, res as Response, next as NextFunction)
 
     expect(res.status).toHaveBeenCalledWith(500)
     expect(res.json).toHaveBeenCalledWith({

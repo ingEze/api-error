@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { ErrorHandler } from 'src/errors'
-import { fastifyHandlerMiddleware } from 'src/handlers/fastify'
+import { fastifyErrorMiddleware } from 'src/handlers/fastify'
 
 describe ('Error instanceof ErrorHandler', () => {
   let req: Partial<FastifyRequest>
@@ -21,7 +21,7 @@ describe ('Error instanceof ErrorHandler', () => {
   it ('custom error', () => {
     const err = new ErrorHandler('Custom error', 400, 'CUSTOM_ERROR', { id: 1, info: 'Custom error' })
 
-    fastifyHandlerMiddleware(err, req as FastifyRequest, reply as FastifyReply)
+    fastifyErrorMiddleware(err, req as FastifyRequest, reply as FastifyReply)
     expect(reply.code).toHaveBeenCalledWith(err.statusCode)
     expect(reply.send).toHaveBeenCalledWith(err.toJSON())
   })
@@ -29,7 +29,7 @@ describe ('Error instanceof ErrorHandler', () => {
   it ('generic error',() => {
     const err = new Error('Unexpected error')
 
-    fastifyHandlerMiddleware(err, req as FastifyRequest, reply as FastifyReply)
+    fastifyErrorMiddleware(err, req as FastifyRequest, reply as FastifyReply)
 
     expect(reply.code).toHaveBeenCalledWith(500)
     expect(reply.send).toHaveBeenCalledWith({

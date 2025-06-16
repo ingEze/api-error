@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NestErrorHandlerFilter, NestGenericErrorFilter } from 'src/handlers/nest'
+import { NestErrorFilter, NestGenericErrorFilter } from 'src/handlers/nest'
 import { ErrorHandler } from 'src/errors/error-handler'
 import { ArgumentsHost, HttpException } from '@nestjs/common'
 
-describe('NestErrorHandlerFilter', () => {
-  let filter: NestErrorHandlerFilter
+describe('NestErrorFilter', () => {
+  let filter: NestErrorFilter
   let mockResponse: any
   let mockHost: ArgumentsHost
 
   beforeEach(() => {
-    filter = new NestErrorHandlerFilter()
+    filter = new NestErrorFilter()
     mockResponse = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn()

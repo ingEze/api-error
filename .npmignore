@@ -4,4 +4,6 @@ esbuild.config.js
 .gitignore
 .eslintrc
 tsconfig.json
-.txt
+jest.config.js
+eslint.config.js
+typedoc.json
