@@ -335,6 +335,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - 🐛 [Report bugs](https://github.com/ingeze/api-error/issues)
 - 💡 [Request features](https://github.com/ingeze/api-error/issues)
+- 🖥 [Documentation Web]https://ingeze.github.io/api-error)
 - 📖 [Documentation](https://github.com/ingeze/api-error#readme)
 
 ---
