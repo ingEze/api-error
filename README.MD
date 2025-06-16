@@ -63,7 +63,7 @@ throw new NotFoundError({
 
 ```typescript
 import express from 'express'
-import { expressErrorMiddleware } from '@ingeze/api-error/handlers/express'
+import { expressErrorMiddleware } from '@ingeze/api-error/express'
 import { UserNotFoundError } from '@ingeze/api-error'
 
 const app = express()
@@ -86,7 +86,7 @@ app.use(expressErrorMiddleware)
 ```typescript
 import { Module } from '@nestjs/common'
 import { APP_FILTER } from '@nestjs/core'
-import { NestErrorFilter, NestGenericErrorFilter } from '@ingeze/api-error/handlers/nest'
+import { NestErrorFilter, NestGenericErrorFilter } from '@ingeze/api-error/nest'
 
 @Module({
   providers: [
@@ -107,7 +107,7 @@ export class AppModule {}
 
 ```typescript
 import fastify from 'fastify'
-import { fastifyErrorMiddleware } from '@ingeze/api-error/handlers/fastify'
+import { fastifyErrorMiddleware } from '@ingeze/api-error/fastify'
 
 const app = fastify()
 
@@ -256,7 +256,7 @@ interface ErrorResponse {
 ```typescript
 import express from 'express'
 import { UserNotFoundError, ValidationUserError } from '@ingeze/api-error'
-import { expressErrorMiddleware } from '@ingeze/api-error/handlers/express'
+import { expressErrorMiddleware } from '@ingeze/api-error/express'
 
 const app = express()
 
