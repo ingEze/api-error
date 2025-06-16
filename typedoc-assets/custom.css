@@ -1,6 +1,42 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  color: #222222;
-  margin: 2rem;
-}
+:root {
+  --primary-color: #8b5cf6;      
+  --secondary-color: #6d28d9; 
+  --accent-color: #a855f7;    
+  --accent-secondary: #c084fc;
+  
+  --background-color: #0f0f23;    
+  --surface-color: #1a1a2e;       
+  --surface-elevated: #252545;    
+  --surface-hover: #2d2d4d;       
+  
+  --border-color: #374151;        
+  --border-light: #4b5563;        
+  --border-accent: #7c3aed;        
+
+  --text-primary: #f8fafc;        
+  --text-secondary: #cbd5e1;      
+  --text-muted: #94a3b8;           
+  --text-accent: #c084fc;         
+  --text-accent-hover: #ddd6fe;    
+  
+  --code-bg: #1e1b2e;            
+  --code-border: #4c1d95;         
+  --code-text: #e0e7ff;           
+  --code-keyword: #a855f7;       
+  --code-string: #34d399;         
+  --code-comment: #6b7280;        
+  
+  --hover-color: #2d2d4d;         
+  --active-color: #3730a3;        
+  --selection-bg: #7c3aed33;      
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  --shadow-purple: 0 4px 14px -2px rgb(139 92 246 / 0.3);
+  
+  --border-radius: 0.75rem;
+  --border-radius-sm: 0.5rem;
+  --transition: all 0.2s ease-in-out;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace
