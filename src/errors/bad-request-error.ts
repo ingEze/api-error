@@ -8,8 +8,8 @@
  * @module errors/bad-request-error
  */
 
-import { BadRequestErrorType } from 'src/types/bad-request-error.types'
-import { ErrorHandler } from './error-handler'
+import type { BadRequestErrorType } from '../types/index.js'
+import { ErrorHandler } from './error-handler.js'
 
 /**
  * Represents a generic bad request error (HTTP 400).
@@ -24,7 +24,11 @@ export class BadRequestError extends ErrorHandler {
    * @param {BadRequestErrorType} [type='BAD_REQUEST'] Specific bad request error type.
    * @param {Record<string, unknown>=} details Optional additional error details.
    */
-  constructor(message: string = 'Bad request.', type: BadRequestErrorType = 'BAD_REQUEST', details?: Record<string, unknown>) {
+  constructor(
+    message: string = 'Bad request.',
+    type: BadRequestErrorType = 'BAD_REQUEST',
+    details?: Record<string, unknown>
+  ) {
     super(message, 400, type, details)
   }
 }

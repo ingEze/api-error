@@ -13,30 +13,29 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
-    "./handler/express": {
-      "import": "./dist/handler/express.js",
-      "require": "./dist/handler/express.js",
-      "types": "./dist/handler/express.d.ts"
+    "./express": {
+      "import": "./dist/express.js",
+      "require": "./dist/express.js"
     },
-    "./handler/nest": {
-      "import": "./dist/handler/nest.js",
-      "require": "./dist/handler/nest.js",
-      "types": "./dist/handler/nest.d.ts"
+    "./nest": {
+        "import": "./dist/nest.js",
+        "require": "./dist/nest.js"
     },
-    "./handler/fastify": {
-      "import": "./dist/handler/fastify.js",
-      "require": "./dist/handler/fastify.js",
-      "types": "./dist/handler/fastify.d.ts"
+    "./fastify": {
+        "import": "./dist/fastify.js",
+        "require": "./dist/fastify.js"
     }
   },
   "scripts": {
+    "start": "node dist/index.js",
     "test": "jest",
-    "build": "tsc",
+    "build": "npx tsc",
+    "build:types": "tsc --emitDeclarationOnly",
     "dev": "node esbuild.config.js && node dist/main.js",
     "prepublishOnly": "node esbuild.config.js",
+    "clean": "rm -rf dist",
     "docs": "typedoc"
   },
   "keywords": [

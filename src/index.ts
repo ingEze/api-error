@@ -1,3 +1,3 @@
-export * from './errors'
-export * from './types'
-export * from './utils/create-handle-error'
+export * from './errors/index.js'
+export * from './types/index.js'
+export * from './utils/create-handle-error.js'

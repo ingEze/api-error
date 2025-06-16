@@ -8,8 +8,8 @@
  * @module errors/forbidden-error
  */
 
-import { ErrorHandler } from './error-handler'
-import { ForbiddenErrorType } from 'src/types'
+import { ErrorHandler } from './error-handler.js'
+import type { ForbiddenErrorType } from '../types/index.js'
 
 /**
  * Represents a generic forbidden error (HTTP 403).

@@ -1,4 +1,4 @@
-import { ErrorHandler } from 'src/errors'
+import { ErrorHandler } from '../errors/index.js'
 
 /**
  * Options for creating a custom error class.

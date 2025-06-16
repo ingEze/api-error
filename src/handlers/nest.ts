@@ -1,7 +1,7 @@
 
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common'
 import { Response } from 'express'
-import { ErrorHandler } from '../errors/error-handler'
+import { ErrorHandler } from '../errors/error-handler.js'
 
 /**
  * NestJS exception filter for handling `ErrorHandler` errors in the `@ingeze/api-error` package.

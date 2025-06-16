@@ -8,8 +8,8 @@
  * @module errors/unauthorized-error
  */
 
-import type { UnauthorizedErrorType } from 'src/types/unauthorized-error.types'
-import { ErrorHandler } from '.'
+import type { UnauthorizedErrorType } from '../types/index.js'
+import { ErrorHandler } from './error-handler.js'
 
 /**
  * Represents a generic unauthorized error (HTTP 401).

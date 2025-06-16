@@ -1,4 +1,4 @@
-import type { BadRequestErrorType, NotFoundErrorType, UnauthorizedErrorType, ErrorResponse, ForbiddenErrorType, ValidationErrorType  } from 'src/types'
+import type { BadRequestErrorType, NotFoundErrorType, UnauthorizedErrorType, ErrorResponse, ForbiddenErrorType, ValidationErrorType  } from '../types/index.js'
 
 /**
  * Custom error handler class for the application.
@@ -40,7 +40,7 @@ export class ErrorHandler extends Error {
     this.success = false
     this.statusCode = statusCode
     this.type = type
-    this.message = message || 'Internal server error'
+    this.message = message ?? 'Internal server error'
     this.details = details
     Error.captureStackTrace(this, this.constructor)
   }

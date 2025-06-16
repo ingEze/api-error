@@ -8,3 +8,4 @@ jest.config.js
 eslint.config.js
 typedoc.json
 typedic-assets/
+task.md

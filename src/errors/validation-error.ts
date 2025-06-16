@@ -8,8 +8,8 @@
  * @module errors/validation-error
  */
 
-import { ErrorHandler } from './error-handler'
-import { ValidationErrorType } from 'src/types'
+import { ErrorHandler } from './error-handler.js'
+import type { ValidationErrorType } from '../types/index.js'
 
 /**
  * Represents a generic validation error (HTTP 422).

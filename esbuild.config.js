@@ -1,11 +1,14 @@
 import { build } from 'esbuild'
+import glob from 'fast-glob'
+
+const entryPoints = await glob('./src/**/*.ts')
 
 build({
-  entryPoints: ['./src/main/main.ts'],
-  outfile: './dist/main.js',
-  bundle: true,
+  entryPoints,
+  outdir: 'dist',
   platform: 'node',
   target: 'node18',
   format: 'esm',
-  sourcemap: true
-}).catch(process.exit(1))
+  sourcemap: true,
+  outbase: 'src'
+}).catch(() => process.exit(1))
