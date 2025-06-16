@@ -1,4 +1,4 @@
-export type { BadRequestErrorType, BadRequestErrorOptions } from './bad-request-error.types.js'
+export type { BadRequestErrorType } from './bad-request-error.types.js'
 export type { NotFoundErrorType } from './not-found-error.types.js'
 export type { UnauthorizedErrorType } from './unauthorized-error.types.js'
 export type { ForbiddenErrorType } from './forbidden-error.types.js'
