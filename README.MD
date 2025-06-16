@@ -263,12 +263,14 @@ const app = express()
 app.post('/users', async (req, res) => {
   const { email, name } = req.body
   
+  // Validate required fields
   if (!email || !name) {
     throw new ValidationUserError({ 
       missing: !email ? 'email' : 'name' 
     })
   }
   
+  // Check if user already exists
   const existingUser = await findUserByEmail(email)
   if (existingUser) {
     throw new ValidationUserError({ 
@@ -276,11 +278,13 @@ app.post('/users', async (req, res) => {
       reason: 'already exists' 
     })
   }
-  
+
+  // Create and return the new user
   const user = await createUser({ email, name })
   res.status(201).json(user)
 })
 
+// Global error handler
 app.use(expressErrorMiddleware)
 ```
 
@@ -301,14 +305,14 @@ export class UserService {
     
     return user
   }
-  
+
   async updateUser(id: string, data: UpdateUserDto) {
     if (!data.email && !data.name) {
       throw new ValidationUserError({ 
         message: 'At least one field must be provided' 
       })
     }
-    
+
     const user = await this.findUser(id) // Will throw if not found
     return this.userRepository.update(id, data)
   }
@@ -338,6 +342,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - 🖥 [Documentation Web](https://ingeze.github.io/api-error)
 - 👉 [Documentation DeepWiki](https://deepwiki.com/ingEze/api-error)
 - 📖 [Documentation](https://github.com/ingeze/api-error#readme)
+
+### 📬 Contact Me
+
+- 📧 **Email**: [ezequielrodrigosaucedo@gmail.com](mailto:ezequielrodrigosaucedo@gmail.com)  
+- 💼 **LinkedIn**: [linkedin.com/in/ezequiel-rodrigo-saucedo](https://www.linkedin.com/in/ezequiel-rodrigo-saucedo-50451a294)
 
 ---
 
