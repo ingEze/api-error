@@ -1,6 +1,6 @@
 {
   "name": "@ingeze/api-error",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "type": "module",
   "files": [
@@ -35,7 +35,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "test": "jest",
-    "build": "npx tsc",
+    "build": "node build.js",
     "build:types": "tsc --emitDeclarationOnly",
     "dev": "node esbuild.config.js && node dist/main.js",
     "prepublishOnly": "npm run build:types && node esbuild.config.js",

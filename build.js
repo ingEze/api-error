@@ -1,7 +1,9 @@
 import { build } from 'esbuild'
+import { execSync } from 'child_process'
 import glob from 'fast-glob'
 import fs from 'fs/promises'
-import path from 'path'
+
+console.log('🔨 Compilando JavaScript con ESBuild...')
 
 const entryPoints = await glob('./src/**/*.ts')
 
@@ -11,7 +13,6 @@ const addJsExtensionPlugin = {
     build.onLoad({ filter: /\.ts$/ }, async(args) => {
       let contents = await fs.readFile(args.path, 'utf8')
 
-      // Reemplaza imports relativos sin extensión con extensión .js
       contents = contents.replace(
         /from\s+['"](\.\.?\/[^'"]+)['"]/g,
         (match, p1) => {
@@ -46,9 +47,13 @@ await build({
   plugins: [addJsExtensionPlugin]
 })
 
-// Después de la compilación, corregir los archivos .d.ts
-console.log('Corrigiendo archivos de declaración...')
+console.log('📝 Generando declaraciones de TypeScript...')
+execSync('npx tsc --emitDeclarationOnly', { stdio: 'inherit' })
+
+console.log('🔧 Corrigiendo archivos de declaración...')
 await fixDeclarationFiles()
+
+console.log('✅ Build completado exitosamente!')
 
 async function fixDeclarationFiles() {
   try {
@@ -57,24 +62,9 @@ async function fixDeclarationFiles() {
     for (const file of dtsFiles) {
       let content = await fs.readFile(file, 'utf8')
 
-      // Reemplazar imports/exports relativos sin extensión
+      // Corregir imports y exports
       content = content.replace(
-        /(from\s+['"])(\.\.?\/[^'"]+)(['"])/g,
-        (match, prefix, importPath, suffix) => {
-          if (
-            !importPath.endsWith('.js') &&
-            !importPath.endsWith('.ts') &&
-            !importPath.endsWith('.json')
-          ) {
-            return `${prefix}${importPath}.js${suffix}`
-          }
-          return match
-        }
-      )
-
-      // También corregir exports
-      content = content.replace(
-        /(export\s+.*\s+from\s+['"])(\.\.?\/[^'"]+)(['"])/g,
+        /((?:from|export\s+.*\s+from)\s+['"])(\.\.?\/[^'"]+)(['"])/g,
         (match, prefix, importPath, suffix) => {
           if (
             !importPath.endsWith('.js') &&
@@ -90,8 +80,9 @@ async function fixDeclarationFiles() {
       await fs.writeFile(file, content, 'utf8')
     }
 
-    console.log(`✅ Corregidos ${dtsFiles.length} archivos .d.ts`)
+    console.log(`   ✅ Corregidos ${dtsFiles.length} archivos .d.ts`)
   } catch (error) {
-    console.error('❌ Error corrigiendo archivos .d.ts:', error)
+    console.error('   ❌ Error:', error)
+    process.exit(1)
   }
 }
