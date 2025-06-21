@@ -23,8 +23,12 @@ import { ErrorHandler } from '../errors/index'
  * app.use(expressErrorMiddleware);
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 export function expressErrorMiddleware(err: Error, req: Request, res: Response, next: NextFunction): void {
+  if (res.headersSent) {
+    return next(err)
+  }
+
   if (err instanceof ErrorHandler) {
     res.status(err.statusCode).json(err.toJSON())
   } else {
