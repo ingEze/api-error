@@ -30,6 +30,42 @@ yarn add @ingeze/api-error
 pnpm add @ingeze/api-error
 ```
 
+## 📦 Subpath Exports
+
+This package uses [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) to expose integrations for different frameworks (Express, Nest, Fastify, etc.).
+
+### Example usage
+
+```ts
+import { expressErrorMiddleware } from '@ingeze/api-error/express'
+// or
+import { NestErrorFilter, NestGenericErrorFilter } from '@ingeze/api-error/nest'
+// or
+import { fastifyErrorMiddleware } from '@ingeze/api-error/fastify'
+```
+> This lets you import only what you need, without loading unnecessary code.
+
+### ⚠️ Required TypeScript Configuration
+To make TypeScript properly recognize subpath exports (like @ingeze/api-error/express), you must use a modern module resolution strategy.
+
+Make sure your tsconfig.json includes:
+```tsconfig.json
+{
+  "compilerOptions": {
+    "moduleResolution": "node16", // or "nodenext" if using ESM
+    "module": "esnext",           // or "commonjs" if using require
+    "target": "es2020",
+    "esModuleInterop": true
+  }
+}
+```
+> Starting from TypeScript 4.7+, *node16* and *nodenext* support the *exports* field in *package.json*.
+
+### ✅ Minimum Requirements
+- Node.js ≥ 16
+- TypeScript ≥ 4.7
+- Modern bundlers like esbuild, tsup, vite, etc.
+
 ## 🚀 Quick Start
 
 ### Basic Usage
