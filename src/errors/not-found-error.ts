@@ -21,19 +21,17 @@ import { ErrorHandler } from './error-handler'
  *
  * @extends ErrorHandler
  *
- * @example
- * // Using details object (message defaults to "Resource not found")
- * throw new NotFoundError({ reason: 'User does not exist' });
- *
- * @example
- * // Using custom message, type and details
- * throw new NotFoundError('User not found', 'NOT_FOUND_USER', { userId: 123 });
- *
- * @param {Record<string, unknown>} [details] - Optional additional error details.
- *
- * @param {string} [message] - Optional custom error message.
- * @param {NotFoundErrorType} [type='NOT_FOUND'] - Optional specific error type.
- * @param {Record<string, unknown>} [details] - Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Resource not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional error context, set by the user when throwing the error.
  */
 export class NotFoundError extends ErrorHandler {
   constructor(details?: Record<string, unknown>);
@@ -54,22 +52,21 @@ export class NotFoundError extends ErrorHandler {
 /**
  * Error thrown when a specific user is not found.
  *
- * Extends the generic NotFoundError with a predefined message and type.
- *
  * @extends NotFoundError
  *
- * @example
- * // Throw error with optional details
- * throw new UserNotFoundError({ userId: '1234' });
- *
- * @param {Record<string, unknown>} [details] - Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "User not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_USER",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the user not found, set by the user.
  */
 export class UserNotFoundError extends NotFoundError {
-  /**
-   * Creates a new UserNotFoundError instance.
-   *
-   * @param {Record<string, unknown>} [details] Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('User not found', 'NOT_FOUND_USER', details)
   }
@@ -80,10 +77,17 @@ export class UserNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new EmailNotFoundError({ email: 'user@example.com' });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Email not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_EMAIL",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the email not found, set by the user.
  */
 export class EmailNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -96,10 +100,17 @@ export class EmailNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new ProductNotFoundError({ productId: 123 });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Product not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_PRODUCT",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the product not found, set by the user.
  */
 export class ProductNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -112,10 +123,17 @@ export class ProductNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new PostNotFoundError({ postId: 456 });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Post not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_POST",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the post not found, set by the user.
  */
 export class PostNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -128,10 +146,17 @@ export class PostNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new CommentNotFoundError({ commentId: 789 });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Comment not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_COMMENT",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the comment not found, set by the user.
  */
 export class CommentNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -144,10 +169,17 @@ export class CommentNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new CategoryNotFoundError({ categoryId: 1011 });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Category not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_CATEGORY",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the category not found, set by the user.
  */
 export class CategoryNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -160,10 +192,17 @@ export class CategoryNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new FileNotFoundError({ fileName: 'document.pdf' });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "File not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_FILE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the file not found, set by the user.
  */
 export class FileNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -176,10 +215,17 @@ export class FileNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new ImageNotFoundError({ imageId: 'img_1234' });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Image not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_IMAGE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the image not found, set by the user.
  */
 export class ImageNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
@@ -192,10 +238,17 @@ export class ImageNotFoundError extends NotFoundError {
  *
  * @extends NotFoundError
  *
- * @example
- * throw new AddressNotFoundError({ addressId: 'addr_5678' });
- *
- * @param {Record<string, unknown>} [details] Optional additional error details.
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Address not found",
+ *   "statusCode": 404,
+ *   "type": "NOT_FOUND_ADDRESS",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the address not found, set by the user.
  */
 export class AddressNotFoundError extends NotFoundError {
   constructor(details?: Record<string, unknown>) {
