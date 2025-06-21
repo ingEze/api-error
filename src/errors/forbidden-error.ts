@@ -1,8 +1,8 @@
 /**
  * Defines custom error classes for handling various forbidden scenarios (HTTP 403).
  *
- * Each class extends `ForbiddenError`, which itself extends `ErrorHandler`.
- * These errors represent specific authorization failures and provide
+ * Each class extends `ForbiddenError`, which in turn extends `ErrorHandler`.
+ * These classes represent specific authorization failures and provide
  * descriptive messages and error types for easier error handling and debugging.
  *
  * @module errors/forbidden-error
@@ -14,11 +14,22 @@ import type { ForbiddenErrorType } from '../types/index'
 /**
  * Represents a generic forbidden error (HTTP 403).
  *
- * This error is thrown when a user attempts to access a resource
- * they do not have permission for. It can be instantiated with either
- * a custom message and type, or with just a `details` object.
+ * Thrown when a user tries to access a resource they do not have permission for.
+ * Can be instantiated with a custom message and type, or just with a `details` object.
  *
  * @extends ErrorHandler
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional error context, set by the user when throwing the error.
  */
 export class ForbiddenError extends ErrorHandler {
   /**
@@ -29,10 +40,10 @@ export class ForbiddenError extends ErrorHandler {
   constructor(details?: Record<string, unknown>)
 
   /**
-   * Creates a new ForbiddenError instance with a custom message, type, and optional details.
+   * Creates a new ForbiddenError instance with a message, type, and optional details.
    *
-   * @param {string} message - A custom error message.
-   * @param {ForbiddenErrorType=} type - A specific error type identifier.
+   * @param {string} message - Custom error message.
+   * @param {ForbiddenErrorType=} type - Specific error type identifier.
    * @param {Record<string, unknown>=} details - Additional error details.
    */
   constructor(message?: string, type?: ForbiddenErrorType, details?: Record<string, unknown>)
@@ -54,13 +65,20 @@ export class ForbiddenError extends ErrorHandler {
  * Error for forbidden user access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "User access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_USER",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden user access, set by the user.
  */
 export class ForbiddenUserError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenUserError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('User access forbidden', 'FORBIDDEN_USER', details)
   }
@@ -70,13 +88,20 @@ export class ForbiddenUserError extends ForbiddenError {
  * Error for forbidden email access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Email access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_EMAIL",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden email access, set by the user.
  */
 export class ForbiddenEmailError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenEmailError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Email access forbidden', 'FORBIDDEN_EMAIL', details)
   }
@@ -86,13 +111,20 @@ export class ForbiddenEmailError extends ForbiddenError {
  * Error for forbidden product access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Product access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_PRODUCT",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden product access, set by the user.
  */
 export class ForbiddenProductError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenProductError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Product access forbidden', 'FORBIDDEN_PRODUCT', details)
   }
@@ -102,13 +134,20 @@ export class ForbiddenProductError extends ForbiddenError {
  * Error for forbidden post access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Post access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_POST",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden post access, set by the user.
  */
 export class ForbiddenPostError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenPostError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Post access forbidden', 'FORBIDDEN_POST', details)
   }
@@ -118,13 +157,20 @@ export class ForbiddenPostError extends ForbiddenError {
  * Error for forbidden comment access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Comment access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_COMMENT",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden comment access, set by the user.
  */
 export class ForbiddenCommentError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenCommentError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Comment access forbidden', 'FORBIDDEN_COMMENT', details)
   }
@@ -134,13 +180,20 @@ export class ForbiddenCommentError extends ForbiddenError {
  * Error for forbidden category access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Category access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_CATEGORY",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden category access, set by the user.
  */
 export class ForbiddenCategoryError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenCategoryError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Category access forbidden', 'FORBIDDEN_CATEGORY', details)
   }
@@ -150,13 +203,20 @@ export class ForbiddenCategoryError extends ForbiddenError {
  * Error for forbidden file access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "File access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_FILE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden file access, set by the user.
  */
 export class ForbiddenFileError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenFileError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('File access forbidden', 'FORBIDDEN_FILE', details)
   }
@@ -166,13 +226,20 @@ export class ForbiddenFileError extends ForbiddenError {
  * Error for forbidden image access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Image access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_IMAGE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden image access, set by the user.
  */
 export class ForbiddenImageError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenImageError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Image access forbidden', 'FORBIDDEN_IMAGE', details)
   }
@@ -182,13 +249,20 @@ export class ForbiddenImageError extends ForbiddenError {
  * Error for forbidden address access.
  *
  * @extends ForbiddenError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Address access forbidden",
+ *   "statusCode": 403,
+ *   "type": "FORBIDDEN_ADDRESS",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the forbidden address access, set by the user.
  */
 export class ForbiddenAddressError extends ForbiddenError {
-  /**
-   * Creates a new ForbiddenAddressError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Address access forbidden', 'FORBIDDEN_ADDRESS', details)
   }
