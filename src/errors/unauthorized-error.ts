@@ -21,6 +21,18 @@ import { ErrorHandler } from './error-handler'
  * or directly with a `details` object.
  *
  * @extends ErrorHandler
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Unauthorized",
+ *   "statusCode": 401,
+ *   "type": "UNAUTHORIZED",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional error context, set by the user when throwing the error.
  */
 export class UnauthorizedError extends ErrorHandler {
   /**
@@ -56,13 +68,20 @@ export class UnauthorizedError extends ErrorHandler {
  * Error for invalid token.
  *
  * @extends UnauthorizedError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid token",
+ *   "statusCode": 401,
+ *   "type": "INVALID_TOKEN",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the invalid token, set by the user.
  */
 export class InvalidTokenError extends UnauthorizedError {
-  /**
-   * Creates a new InvalidTokenError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Invalid token', 'INVALID_TOKEN', details)
   }
@@ -72,13 +91,20 @@ export class InvalidTokenError extends UnauthorizedError {
  * Error for invalid credentials.
  *
  * @extends UnauthorizedError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid credentials",
+ *   "statusCode": 401,
+ *   "type": "INVALID_CREDENTIALS",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the invalid credentials, set by the user.
  */
 export class InvalidCredentialsError extends UnauthorizedError {
-  /**
-   * Creates a new InvalidCredentialsError instance.
-   *
-   * @param {Record<string, unknown>} details Additional error details.
-   */
   constructor(details: Record<string, unknown>) {
     super('Invalid credentials', 'INVALID_CREDENTIALS', details)
   }
@@ -88,13 +114,20 @@ export class InvalidCredentialsError extends UnauthorizedError {
  * Error for invalid or expired access token.
  *
  * @extends UnauthorizedError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Access token invalid or expired",
+ *   "statusCode": 401,
+ *   "type": "ACCESS_TOKEN_INVALID",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the invalid or expired access token, set by the user.
  */
 export class AccessTokenError extends UnauthorizedError {
-  /**
-   * Creates a new AccessTokenError instance.
-   *
-   * @param {Record<string, unknown>} details Additional error details.
-   */
   constructor(details: Record<string, unknown>) {
     super('Access token invalid or expired', 'ACCESS_TOKEN_INVALID', details)
   }
@@ -104,13 +137,20 @@ export class AccessTokenError extends UnauthorizedError {
  * Error for invalid or expired refresh token.
  *
  * @extends UnauthorizedError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Refresh token invalid or expired",
+ *   "statusCode": 401,
+ *   "type": "REFRESH_TOKEN_INVALID",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the invalid or expired refresh token, set by the user.
  */
 export class RefreshTokenError extends UnauthorizedError {
-  /**
-   * Creates a new RefreshTokenError instance.
-   *
-   * @param {Record<string, unknown>} details Additional error details.
-   */
   constructor(details: Record<string, unknown>) {
     super('Refresh token invalid or expired', 'REFRESH_TOKEN_INVALID', details)
   }
@@ -120,13 +160,20 @@ export class RefreshTokenError extends UnauthorizedError {
  * Error for invalid API key.
  *
  * @extends UnauthorizedError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid API key",
+ *   "statusCode": 401,
+ *   "type": "API_KEY_INVALID",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the invalid API key, set by the user.
  */
 export class APIKeyError extends UnauthorizedError {
-  /**
-   * Creates a new APIKeyError instance.
-   *
-   * @param {Record<string, unknown>} details Additional error details.
-   */
   constructor(details: Record<string, unknown>) {
     super('Invalid API key', 'API_KEY_INVALID', details)
   }
@@ -136,13 +183,20 @@ export class APIKeyError extends UnauthorizedError {
  * Error for unauthorized device.
  *
  * @extends UnauthorizedError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Unauthorized device",
+ *   "statusCode": 401,
+ *   "type": "UNAUTHORIZED_DEVICE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the unauthorized device, set by the user.
  */
 export class UnauthorizedDeviceError extends UnauthorizedError {
-  /**
-   * Creates a new UnauthorizedDeviceError instance.
-   *
-   * @param {Record<string, unknown>} details Additional error details.
-   */
   constructor(details: Record<string, unknown>) {
     super('Unauthorized device', 'UNAUTHORIZED_DEVICE', details)
   }
