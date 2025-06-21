@@ -21,6 +21,18 @@ import type { ValidationErrorType } from '../types/index'
  * or directly with a `details` object.
  *
  * @extends ErrorHandler
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Validation error",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional error context, set by the user when throwing the error.
  */
 export class ValidationError extends ErrorHandler {
   /**
@@ -56,13 +68,20 @@ export class ValidationError extends ErrorHandler {
  * Error for user validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "User validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_USER",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the user validation failure, set by the user.
  */
 export class ValidationUserError extends ValidationError {
-  /**
-   * Creates a new ValidationUserError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('User validation failed', 'VALIDATION_USER', details)
   }
@@ -72,13 +91,20 @@ export class ValidationUserError extends ValidationError {
  * Error for email validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Email validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_EMAIL",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the email validation failure, set by the user.
  */
 export class ValidationEmailError extends ValidationError {
-  /**
-   * Creates a new ValidationEmailError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Email validation failed', 'VALIDATION_EMAIL', details)
   }
@@ -88,13 +114,20 @@ export class ValidationEmailError extends ValidationError {
  * Error for product validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Product validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_PRODUCT",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the product validation failure, set by the user.
  */
 export class ValidationProductError extends ValidationError {
-  /**
-   * Creates a new ValidationProductError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Product validation failed', 'VALIDATION_PRODUCT', details)
   }
@@ -104,13 +137,20 @@ export class ValidationProductError extends ValidationError {
  * Error for post validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Post validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_POST",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the post validation failure, set by the user.
  */
 export class ValidationPostError extends ValidationError {
-  /**
-   * Creates a new ValidationPostError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Post validation failed', 'VALIDATION_POST', details)
   }
@@ -120,13 +160,20 @@ export class ValidationPostError extends ValidationError {
  * Error for comment validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Comment validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_COMMENT",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the comment validation failure, set by the user.
  */
 export class ValidationCommentError extends ValidationError {
-  /**
-   * Creates a new ValidationCommentError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Comment validation failed', 'VALIDATION_COMMENT', details)
   }
@@ -136,13 +183,20 @@ export class ValidationCommentError extends ValidationError {
  * Error for category validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Category validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_CATEGORY",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the category validation failure, set by the user.
  */
 export class ValidationCategoryError extends ValidationError {
-  /**
-   * Creates a new ValidationCategoryError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Category validation failed', 'VALIDATION_CATEGORY', details)
   }
@@ -152,13 +206,20 @@ export class ValidationCategoryError extends ValidationError {
  * Error for file validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "File validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_FILE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the file validation failure, set by the user.
  */
 export class ValidationFileError extends ValidationError {
-  /**
-   * Creates a new ValidationFileError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('File validation failed', 'VALIDATION_FILE', details)
   }
@@ -168,13 +229,20 @@ export class ValidationFileError extends ValidationError {
  * Error for image validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Image validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_IMAGE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the image validation failure, set by the user.
  */
 export class ValidationImageError extends ValidationError {
-  /**
-   * Creates a new ValidationImageError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Image validation failed', 'VALIDATION_IMAGE', details)
   }
@@ -184,13 +252,20 @@ export class ValidationImageError extends ValidationError {
  * Error for address validation failure.
  *
  * @extends ValidationError
+ *
+ * Response example:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Address validation failed",
+ *   "statusCode": 422,
+ *   "type": "VALIDATION_ADDRESS",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the address validation failure, set by the user.
  */
 export class ValidationAddressError extends ValidationError {
-  /**
-   * Creates a new ValidationAddressError instance.
-   *
-   * @param {Record<string, unknown>=} details Optional additional error details.
-   */
   constructor(details?: Record<string, unknown>) {
     super('Address validation failed', 'VALIDATION_ADDRESS', details)
   }
