@@ -2,7 +2,6 @@
   "entryPoints": [
     "src/index.ts"
   ],
-  "customCss": "typedoc-assets/custom.css",
   "out": "docs",
   "theme": "default",
   "excludePrivate": true,
@@ -10,5 +9,5 @@
   "excludeNotDocumented": false,
   "readme": "README.md",
   "disableSources": true,
-  "includeVersion": true,
+  "includeVersion": true
 }
