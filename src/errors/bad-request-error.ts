@@ -6,6 +6,18 @@
  * descriptive messages and error types for easier error handling and debugging.
  *
  * @module errors/bad-request-error
+ *
+ * Response for BadRequestError:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Bad request",
+ *   "statusCode": 400,
+ *   "type": "BAD_REQUEST",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional error context, set by the user when throwing the error.
  */
 
 import type { BadRequestErrorType } from '../types/index'
@@ -15,6 +27,18 @@ import { ErrorHandler } from './error-handler'
  * Represents a generic bad request error (HTTP 400).
  *
  * @extends ErrorHandler
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Bad request",
+ *   "statusCode": 400,
+ *   "type": "BAD_REQUEST",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional error context, set by the user when throwing the error.
  */
 export class BadRequestError extends ErrorHandler {
   /**
@@ -48,6 +72,18 @@ export class BadRequestError extends ErrorHandler {
  * Error for missing or invalid user data in the request.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Missing required user information in the request",
+ *   "statusCode": 400,
+ *   "type": "INVALID_USER_DATA",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the missing or invalid user data, set by the user.
  */
 export class InvalidUserDataError extends BadRequestError {
   /**
@@ -64,6 +100,18 @@ export class InvalidUserDataError extends BadRequestError {
  * Error for invalid or missing email field.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid email format or missing email field",
+ *   "statusCode": 400,
+ *   "type": "INVALID_EMAIL",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the email validation error, set by the user.
  */
 export class InvalidEmailError extends BadRequestError {
   /**
@@ -80,6 +128,18 @@ export class InvalidEmailError extends BadRequestError {
  * Error for invalid or missing product data.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing product details",
+ *   "statusCode": 400,
+ *   "type": "INVALID_PRODUCT_DATA",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the product data error, set by the user.
  */
 export class InvalidProductDataError extends BadRequestError {
   /**
@@ -96,6 +156,18 @@ export class InvalidProductDataError extends BadRequestError {
  * Error for invalid or missing post data.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing post data",
+ *   "statusCode": 400,
+ *   "type": "INVALID_POST_DATA",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the post data error, set by the user.
  */
 export class InvalidPostData extends BadRequestError {
   /**
@@ -112,6 +184,18 @@ export class InvalidPostData extends BadRequestError {
  * Error for invalid or missing comment data.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing comment data",
+ *   "statusCode": 400,
+ *   "type": "INVALID_COMMENT_DATA",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the comment data error, set by the user.
  */
 export class InvalidCommentDataError extends BadRequestError {
   /**
@@ -128,6 +212,18 @@ export class InvalidCommentDataError extends BadRequestError {
  * Error for invalid or missing category information.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing category information",
+ *   "statusCode": 400,
+ *   "type": "INVALID_CATEGORY_DATA",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the category data error, set by the user.
  */
 export class InvalidCategoryDataError extends BadRequestError {
   /**
@@ -144,6 +240,18 @@ export class InvalidCategoryDataError extends BadRequestError {
  * Error for invalid or missing file in the request.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing file in the request",
+ *   "statusCode": 400,
+ *   "type": "INVALID_FILE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the file error, set by the user.
  */
 export class InvalidFileError extends BadRequestError {
   /**
@@ -160,6 +268,18 @@ export class InvalidFileError extends BadRequestError {
  * Error for invalid or missing image data.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing image data",
+ *   "statusCode": 400,
+ *   "type": "INVALID_IMAGE",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the image data error, set by the user.
  */
 export class InvalidImageError extends BadRequestError {
   /**
@@ -176,6 +296,18 @@ export class InvalidImageError extends BadRequestError {
  * Error for invalid or missing address information.
  *
  * @extends BadRequestError
+ *
+ * Response:
+ * ```json
+ * {
+ *   "success": false,
+ *   "message": "Invalid or missing address information",
+ *   "statusCode": 400,
+ *   "type": "INVALID_ADDRESS",
+ *   "details": {} // Optional, provided by the user with extra error context
+ * }
+ * ```
+ * - `details`: Optional object with additional information about the address error, set by the user.
  */
 export class InvalidAddressError extends BadRequestError {
   /**
