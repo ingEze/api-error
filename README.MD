@@ -298,12 +298,15 @@ const app = express()
 
 app.post('/users', async (req, res) => {
   const { email, name } = req.body
-  
+
   // Validate required fields
-  if (!email || !name) {
-    throw new ValidationUserError({ 
-      missing: !email ? 'email' : 'name' 
-    })
+  const missing = [];
+
+  if (!email) missing.push("Email can't be empty");
+  if (!name) missing.push("Name can't be empty");
+
+  if (missing.length) {
+    throw new ValidationUserError({ missing: missing.join('. '), missing });
   }
   
   // Check if user already exists
