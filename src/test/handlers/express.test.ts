@@ -42,4 +42,27 @@ describe('expressHandlerMiddleware with mocks', () => {
       message: 'An unexpected error occurred'
     })
   })
+
+  it('handles ZodError (simulated)', () => {
+    const zodLikeError = {
+      name: 'ZodError',
+      issues: [
+        { code: 'unrecognized_keys', keys: ['hack'] },
+        { message: 'Email is not valid' }
+      ]
+    }
+
+    expressErrorMiddleware(zodLikeError as any, req as Request, res as Response, next as NextFunction)
+
+    expect(res.status).toHaveBeenCalledWith(422)
+    expect(res.json).toHaveBeenCalledWith({
+      success: false,
+      statusCode: 422,
+      type: 'VALIDATION_USER',
+      message: 'User validation failed',
+      details: {
+        reason: 'Unexpected fields: hack. Email is not valid'
+      }
+    })
+  })
 })

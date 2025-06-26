@@ -8,6 +8,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and this project adheres to [Semantic Versioning](https://semver.org).
 
+---
+
+## [1.1.0] - 2025-06-26
+
+### Added
+- Support for handling Zod validation errors without adding `zod` as a dependency.
+- Now `expressErrorMiddleware` detects errors with `err.name === 'ZodError'` and maps `.issues` into a user-friendly message via `ValidationError`.
+
+### Changed
+- Internally maps unknown keys (e.g., `"unrecognized_keys"`) to readable messages like `"Unexpected fields: field1, field2"`.
+
+### Notes
+- No new dependencies added.
+- Compatible with projects not using Zod — auto-detection is based on the error's `.name` and `.issues` shape.
+
+
 ## [1.0.7] - 2025-06-21
 ### Added
 - Improved documentation for all error classes.

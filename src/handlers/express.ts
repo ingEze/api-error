@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response, NextFunction } from 'express'
-import { ErrorHandler } from '../errors/index'
+import { ErrorHandler, ValidationError } from '../errors/index'
 
 /**
  * Express error handling middleware for the `@ingeze/api-error` package.
@@ -31,6 +32,17 @@ export function expressErrorMiddleware(err: Error, req: Request, res: Response, 
 
   if (err instanceof ErrorHandler) {
     res.status(err.statusCode).json(err.toJSON())
+  } else if (err.name === 'ZodError') {
+    const issues = (err as any).issues ?? []
+    const reason = issues.map((issue: any) => {
+      if (issue.code === 'unrecognized_keys') {
+        return `Unexpected fields: ${issue.keys.join(', ')}`
+      }
+      return issue.message
+    }).join('. ')
+
+    const validatioErr = new ValidationError({ reason })
+    res.status(validatioErr.statusCode).json(validatioErr.toJSON())
   } else {
     res.status(500).json({
       success: false,
