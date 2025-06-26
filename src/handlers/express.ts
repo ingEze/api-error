@@ -32,6 +32,7 @@ export function expressErrorMiddleware(err: Error, req: Request, res: Response, 
 
   if (err instanceof ErrorHandler) {
     res.status(err.statusCode).json(err.toJSON())
+    return
   } else if (err.name === 'ZodError') {
     const issues = (err as any).issues ?? []
     const reason = issues.map((issue: any) => {
@@ -43,6 +44,7 @@ export function expressErrorMiddleware(err: Error, req: Request, res: Response, 
 
     const validatioErr = new ValidationError({ reason })
     res.status(validatioErr.statusCode).json(validatioErr.toJSON())
+    return
   } else {
     res.status(500).json({
       success: false,

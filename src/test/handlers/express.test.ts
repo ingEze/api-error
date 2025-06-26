@@ -58,8 +58,8 @@ describe('expressHandlerMiddleware with mocks', () => {
     expect(res.json).toHaveBeenCalledWith({
       success: false,
       statusCode: 422,
-      type: 'VALIDATION_USER',
-      message: 'User validation failed',
+      type: 'VALIDATION',
+      message: 'Validation error',
       details: {
         reason: 'Unexpected fields: hack. Email is not valid'
       }
