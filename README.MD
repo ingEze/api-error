@@ -85,11 +85,11 @@ throw new NotFoundError({
 // Response format:
 {
   "success": false,
-  "type": "NOT_FOUND_USER",
+  "type": "NOT_FOUND",
   "statusCode": 404,
-  "message": "User not found",
+  "message": "Resource not found",
   "details": {
-    "resource": "user",
+    "resource": "Mail",
     "id": "12345"
   }
 }
